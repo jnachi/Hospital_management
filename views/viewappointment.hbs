@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <title>Appointments</title>
+    <style>
+#appointments {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#appointments td, #appointments th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#appointments tr:nth-child(even){background-color: #f2f2f2;}
+
+#appointments tr:hover {background-color: #ddd;}
+
+#appointments th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #202030;
+  color: white;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+  $(document).ready(()=>{
+    $.ajax({
+      url:'viewdata/',
+      type: 'Get',
+      dataType: 'json',
+      success:(data)=>{
+        console.log(data.length);
+        var table = document.getElementById("appointments");
+        for(var z=0;z<data.length;z++){
+        var row = table.insertRow(z+1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = data[z]['firstname'];
+        cell2.innerHTML= data[z]['hosdepartments']
+        cell3.innerHTML=data[z]['date']
+  }
+      }
+    })
+  })
+  
+</script>
+    <head>
+        <body>
+
+            <table id="appointments">
+              <h3 style="text-align:center;">Appointments</h3>
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Appointment Date</th>
+             </tr>
+
+                
+            </table>
+        </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="./css/style.css">
+<style>
+.panel{
+width:100%;
+height:70px;
+background-color: #202030;
+box-sizing: border-box;
+position: absolute;
+}
+h4{
+  color:white;
+  text-align:center;
+  margin-top: 20px;
+}
+
+input[type=text] ,input[name='username'],input[type=password],input[type=number],select,input[type=email]{
+  width: 40%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  resize: vertical
+}
+
+label {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+input[type=submit] {
+  background-color: yellow;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+
+}
+
+input[type=submit]:hover {
+  background-color: red;
+  color: white;
+}
+.logincont{
+  background-color: rgba(255,255,255,0.5);
+  width: 100%;
+  height: 1550px;
+  position: absolute;
+  top: 350px;
+  text-align:center;
+  padding-top:15px;
+
+}
+
+#text1{
+  font-size: 15px;
+  position: absolute;
+  top: 250px;
+  margin-left: 10px;
+}
+#link1{
+  text-decoration: none;
+  color: black;
+}
+.red{
+  color: red;
+}
+</style>
+</head>
+<body>
+  <div class="header">
+    <h2>E L I X I R</h2>
+    <p>Hospital Management System</p>
+  </div>
+  <div class="panel">
+    <h4>Create new Account</h4>
+  </div>
+  <div class="logincont">
+    <form class="patlog" action="/newpatient" method="post">
+
+      <label for="username">Username <span class="red">*</span></label><br>
+      <input type="text" id="username" name="username" placeholder="Username" title="Enter your username" required><br>
+      <label for="password">Password <span class="red">*</span></label><br>
+      <input type="password" id="password" name="password" placeholder="Password" title="Enter your password" required><br>
+      <label for="cnfpassword">Confirm Password <span class="red">*</span></label><br>
+      <input type="password" id="cnfpassword" name="confirmpassword" placeholder="Confirm Password" title="Re-enter your password" required><br>
+      <label for="fname">First Name <span class="red">*</span></label><br>
+      <input type="text" id="fname" name="fname" placeholder="Your name.." title="Enter your first name" required><br>
+
+      <label for="lname">Last Name <span class="red">*</span></label><br>
+      <input type="text" id="lname" name="lname" placeholder="Your last name.." title="Enter your last name" required><br>
+
+      <label for="age">Age <span class="red">*</span></label><br>
+      <input type="number" id="age" name="age" placeholder="Your age.." title="Enter your age" required><br>
+
+      <label for="gender">Gender <span class="red">*</span></label>
+      <input type="radio" name="gender" value="male" checked> Male
+      <input type="radio" name="gender" value="female"> Female
+      <input type="radio" name="gender" value="other"> Other <br><br>
+
+      <fieldset>
+        <legend>Address</legend>
+        <label for="housename">House Name or Number <span class="red">*</span></label><br>
+        <input type="text" id="housename" name="housename" placeholder="House Name.." title="Enter your house name" required><br>
+        <label for="street">Street <span class="red">*</span></label><br>
+        <input type="text" id="street" name="street" placeholder="Your street.." title="Enter your street" required><br>
+        <label for="Locality">Locality <span class="red">*</span></label><br>
+        <input type="text" id="locality" name="locality" placeholder="Your locality.." title="Enter your locality" required><br>
+        <label for="pincode">PIN Code <span class="red">*</span></label><br>
+        <input type="text" id="pincode" name="pin" placeholder="Your PIN Code.." title="Enter your PIN Code" required><br>
+        <label for="country">State <span class="red">*</span></label><br>
+        <select name="state">
+    <option value="" disabled selected>Choose State</option>
+    <option>Andhra Pradesh</option>
+    <option>Arunachal Pradesh</option>
+    <option>Assam</option>
+    <option>Odisha</option>
+    <option>Bihar</option>
+    <option>Chhattisgarh</option>
+    <option>Goa</option>
+    <option>Gujarat</option>
+    <option>Haryana</option>
+    <option>Himachal Pradesh</option>
+    <option>Jammu and Kashmir</option>
+    <option>Jharkhand</option>
+    <option>Karnataka</option>
+    <option>Kerala</option>
+    <option>Madhya Pradesh</option>
+    <option>Maharashtra</option>
+    <option>Manipur</option>
+    <option>Meghalaya</option>
+    <option>Mizoram</option>
+    <option>Nagaland</option>
+    <option>Odisha</option>
+    <option>Punjab</option>
+    <option>Rajasthan</option>
+    <option>Sikkim</option>
+    <option>Tamil Nadu</option>
+    <option>Telangana</option>
+    <option>Tripura</option>
+    <option>Uttar Pradesh</option>
+      <option>Uttarakhand</option>
+        <option>West Bengal</option>
+    </select>
+      </fieldset>
+
+      <label for="email">E-mail <span class="red">*</span></label><br>
+      <input type="email" id="email" name="email" placeholder="Your E-mail.." title="Enter your E-mail" required><br>
+
+      <label for="Contact">Contact <span class="red">*</span></label><br>
+      <input type="text" id="contact" name="contactno" placeholder="Your Contact.." title="Enter your contact number" required><br>
+      <input type="submit" value="Create Account">
+    </form>
+  </div>
+</body>
+</html>

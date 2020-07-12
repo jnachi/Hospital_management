@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .column{
+      border: 2px solid black;
+      margin-top: 30px;
+      padding-bottom: 30px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      text-align: center;
+    }
+    a.patient:link, a.patient:visited {
+      background-color: #f44336;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    a.patient:hover, a.patient:active {
+      background-color: red;
+    }
+
+    a.clinician:link, a.clinician:visited {
+      background-color: #258e25;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    a.clinician:hover, a.clinician:active {
+      background-color: #155115;
+    }
+
+    a.admin:link, a.admin:visited {
+      background-color: #1a8cff;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    a.admin:hover, a.admin:active {
+      background-color: #003366;
+    }
+  </style>
+  <script>
+    function alert1(){
+    if(document.URL="http://localhost:3000/contactus"){
+      alert("Successfully sent!");
+    }}
+    </script>
+</head>
+
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+<body>
+
+  <div class="header">
+    <h2>E L I X I R</h2>
+    <p>Hospital Management System</p>
+  </div>
+
+  <div id="navbar">
+    <a class="active" href="/ ">Home</a>
+    <a href="/Hospital">Hospital</a>
+    <a href="Home.html#conlink">Contact Us</a>
+    <a id="myBtn">Login</a>
+    <!-- <a href="/Appointment">Appointments</a> -->
+  </div>
+
+  <div class="content">
+    <p class="intro">
+      Elixir is a complete solution that can be deployed and customized for any hospital or health care institution, providing your patients with the service they expect to find in state of the art medical institutions.
+    </p>
+    <h3 class="features">Core Features</h3>
+    <ul>
+      <li>Quality of Service</li>
+      <li>24*7 Support</li>
+      <li>Reliable Data</li>
+      <li id="conlink">Optimized Resources</li>
+    </ul>
+  </div>
+  <div class="contact">
+    <h3 id="conus">Contact Us</h3>
+    <form class="contactform" action="/contactus" method="post">
+      <label for="fname">Name</label><br>
+      <input type="text" id="fname" name="name" placeholder="Your name.." required><br>
+      <label for="E-mail">E-Mail ID</label><br>
+      <input type="email" id="email" name="email" placeholder="Your E-mail.." required><br>
+      <label for="contactno">Contact Number</label><br>
+      <input type="text" id="contactno" name="contactno" placeholder="Your Contact Number.." required><br>
+      <label for="subject">Write Your Query</label><br>
+      <textarea id="subject" name="question" placeholder="Write something.." style="height:200px" required></textarea><br>
+      <input type="submit" onclick="alert1()" value="Submit">
+    </form>
+  </div>
+  
+  <div class="footer">
+    E L I X I R Technologies Pvt Ltd.
+  </div>
+
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+  <div class="column">
+    <h4>Patient Login</h4>
+    <p>Patients please login here</p>
+<a class="patient" href="/Patientlogin">Patient Login</a>
+  </div>
+
+  <div class="column">
+    <h4>Clinician Login</h4>
+    <p>Clinicians please login here</p>
+<a class="clinician" href="/Clinicallogin">Clinician Login</a>
+  </div>
+
+  <div class="column">
+    <h4>Admin Login</h4>
+    <p>Admins please login here</p>
+  <a class="admin" href="/Adminlogin">Admin Login</a>
+  </div>
+    </div>
+
+  </div>
+
+
+  <script>
+    window.onscroll = function() {
+      myFunction()
+    };
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+  </script>
+
+  <script>
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    #book {
+      text-align: center;
+      border-bottom: 3px dotted  white;
+      padding-bottom: 10px;
+      margin-top: 0px;
+    }
+
+    input[type=text], input[type=email],input[type=number], input[type=date], select, fieldset {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+
+    input[type=radio] {
+      margin-top: 7px;
+      margin-bottom: 16px;
+    }
+
+    input[type=submit] {
+      background-color: #FFFF00;
+      color: black;
+      width: 50%;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      margin-left: 15px;
+      margin-top: 35px;
+    }
+
+    input[type=submit]:hover {
+      background-color: rgb(255, 140, 0);
+    }
+
+    .container {
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      margin-bottom: 50px;
+      color: white;
+    }
+
+    .red {
+      color: #ff0000;
+    }
+
+    #req {
+      text-align: right;
+      font-size: 13px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .column{
+      border: 2px solid black;
+      margin-top: 30px;
+      padding-bottom: 30px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      text-align: center;
+    }
+    a.patient:link, a.patient:visited {
+      background-color: #f44336;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    a.patient:hover, a.patient:active {
+      background-color: red;
+    }
+
+    a.clinician:link, a.clinician:visited {
+      background-color: #258e25;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    a.clinician:hover, a.clinician:active {
+      background-color: #155115;
+    }
+
+    a.admin:link, a.admin:visited {
+      background-color: #1a8cff;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    a.admin:hover, a.admin:active {
+      background-color: #003366;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h2>E L I X I R</h2>
+    <p>Hospital Management System</p>
+  </div>
+
+  <div id="navbar">
+    <a href="/">Home</a>
+    <a href="/Hospital">Hospital</a>
+    <a href="Home.html#conlink">Contact Us</a>
+    <a href="">Login</a>
+    <a class="active" href="/Appointment">Appointments</a>
+  </div>
+  <div class="container">
+    <h2 id="book">Book an Appointment</h2>
+    <p id="req"><span class="red">* </span>required</p>
+    <form name="patientForm" action="appointment.php" method="POST">
+
+      <label for="fname">First Name <span class="red">*</span></label>
+      <input type="text" id="fname" name="firstname" placeholder="Your name.." title="Enter your first name" required>
+
+      <label for="lname">Last Name <span class="red">*</span></label>
+      <input type="text" id="lname" name="lastname" placeholder="Your last name.." title="Enter your last name" required>
+
+      <label for="age">Age <span class="red">*</span></label>
+      <input type="number" id="age" name="age" placeholder="Your age.." title="Enter your age" required>
+
+      <label for="gender">Gender <span class="red">*</span></label>
+      <input type="radio" name="gender" value="male" checked> Male
+      <input type="radio" name="gender" value="female"> Female
+      <input type="radio" name="gender" value="other"> Other
+
+      <fieldset>
+        <legend>Address</legend>
+        <label for="housename">House Name or Number <span class="red">*</span></label>
+        <input type="text" id="housename" name="housename" placeholder="House Name.." title="Enter your house name" required>
+        <label for="street">Street <span class="red">*</span></label>
+        <input type="text" id="street" name="street" placeholder="Your street.." title="Enter your street" required>
+        <label for="Locality">Locality <span class="red">*</span></label>
+        <input type="text" id="locality" name="locality" placeholder="Your locality.." title="Enter your locality" required>
+        <label for="pincode">PIN Code <span class="red">*</span></label>
+        <input type="text" id="pincode" name="pincode" placeholder="Your PIN Code.." title="Enter your PIN Code" required>
+        <label for="state">State <span class="red">*</span></label>
+        <select name="state">
+    <option value="" disabled selected>Choose State</option>
+    <option>Andhra Pradesh</option>
+    <option>Arunachal Pradesh</option>
+    <option>Assam</option>
+    <option>Odisha</option>
+    <option>Bihar</option>
+    <option>Chhattisgarh</option>
+    <option>Goa</option>
+    <option>Gujarat</option>
+    <option>Haryana</option>
+    <option>Himachal Pradesh</option>
+    <option>Jammu and Kashmir</option>
+    <option>Jharkhand</option>
+    <option>Karnataka</option>
+    <option>Kerala</option>
+    <option>Madhya Pradesh</option>
+    <option>Maharashtra</option>
+    <option>Manipur</option>
+    <option>Meghalaya</option>
+    <option>Mizoram</option>
+    <option>Nagaland</option>
+    <option>Odisha</option>
+    <option>Punjab</option>
+    <option>Rajasthan</option>
+    <option>Sikkim</option>
+    <option>Tamil Nadu</option>
+    <option>Telangana</option>
+    <option>Tripura</option>
+    <option>Uttar Pradesh</option>
+      <option>Uttarakhand</option>
+        <option>West Bengal</option>
+    </select>
+      </fieldset>
+
+      <label for="email">E-mail <span class="red">*</span></label>
+      <input type="email" id="email" name="email" placeholder="Your E-mail.." title="Enter your E-mail" required>
+
+      <label for="Contact">Contact <span class="red">*</span></label>
+      <input type="text" id="contact" name="contact" placeholder="Your Contact.." title="Enter your contact number" required>
+
+      <label for="hosdepartments">Department <span class="red">*</span></label>
+      <select id="hosdepartments" name="hosdepartments" title="Select the department" required>
+        <option value="" disabled selected>--------------------------------------------------------------------------------------------------------------------------------------------------- Select Department ----------------------------------------------------------------------------------------------------------------------------------------------</option>
+        <option value="CARDIOTHORACIC AND VASCULAR SURGERY">CARDIOTHORACIC AND VASCULAR SURGERY</option>
+        <option value="UROLOGY">UROLOGY</option>
+        <option value="ENDOCRINOLOGY">ENDOCRINOLOGY</option>
+        <option value="NEONATOLOGY">NEONATOLOGY</option>
+        <option value="ONCOLOGY">ONCOLOGY</option>
+        <option value="PSYCHIATRY">PSYCHIATRY</option>
+        <option value="MEDICAL GASTROENTEROLOGY AND HEPATOLOGY">MEDICAL GASTROENTEROLOGY AND HEPATOLOGY</option>
+        <option value="PHYSICAL MEDICINE AND REHABILITATION">PHYSICAL MEDICINE AND REHABILITATION</option>
+        <option value="DERMATOLOGY">DERMATOLOGY</option>
+        <option value="PLASTIC AND RECONSTRUCTIVE SURGERY">PLASTIC AND RECONSTRUCTIVE SURGERY</option>
+        <option value="ENT AND HEAD AND NECK SURGERY">ENT AND HEAD AND NECK SURGERY</option>
+        <option value="OPHTHALMOLOGY">OPHTHALMOLOGY</option>
+        <option value="FAMILY MEDICINE">FAMILY MEDICINE</option>
+        <option value="PULMONOLOGY">PULMONOLOGY</option>
+        <option value="PAEDIATRICS">PAEDIATRICS</option>
+        <option value="ORTHOPAEDICS">ORTHOPAEDICS</option>
+        <option value="NEPHROLOGY">NEPHROLOGY</option>
+        <option value="OBSTETRICS AND GYNAECOLOGY">OBSTETRICS AND GYNAECOLOGY</option>
+        <option value="GENERAL SURGERY">GENERAL SURGERY</option>
+        <option value="INTERNAL MEDICINE">INTERNAL MEDICINE</option>
+        <option value="NEUROLOGY AND INTERVENTION NEUROLOGY">NEUROLOGY AND INTERVENTION NEUROLOGY</option>
+        <option value="PALLIATIVE CARE">PALLIATIVE CARE</option>
+        <option value="NEUROSURGERY">NEUROSURGERY</option>
+        <option value="REPRODUCTIVE AND FETAL MEDICINE">REPRODUCTIVE AND FETAL MEDICINE</option>
+        <option value="ADULT CARDIAC SERVICES">ADULT CARDIAC SERVICES</option>
+        <option value="PAEDIATRIC AND ADULT CONGENITAL HEART SERVICES">PAEDIATRIC AND ADULT CONGENITAL HEART SERVICES</option>
+        <option value="CARDIOTHORACIC AND VASCULAR SURGERY">CARDIOTHORACIC AND VASCULAR SURGERY</option>
+        <option value="GASTROINTESTINAL AND HEPATOBILIARY SURGERY">GASTROINTESTINAL AND HEPATOBILIARY SURGERY</option>
+        <option value="DENTAL">DENTAL</option>
+        <option value="DEPARTMENT OF DERMATOLOGY VENEREOLOGY AND LEPROSY">DEPARTMENT OF DERMATOLOGY VENEREOLOGY AND LEPROSY</option>
+      </select>
+
+      <label for="appoinmentdate">Appointment Date <span class="red">*</span></label>
+      <input type="text" onfocus="(this.type='date')" name="date" placeholder="Date" required>
+
+      <input type="submit" value="Request Appointment">
+
+    </form>
+  </div>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+  <div class="column">
+    <h4>Patient Login</h4>
+    <p>Patients please login here</p>
+  <a class="patient" href="#" target="_blank">Patient Login</a>
+  </div>
+
+  <div class="column">
+    <h4>Clinician Login</h4>
+    <p>Clinicians please login here</p>
+  <a class="clinician" href="#" target="_blank">Clinician Login</a>
+  </div>
+
+  <div class="column">
+    <h4>Admin Login</h4>
+    <p>Admins please login here</p>
+  <a class="admin" href="#" target="_blank">Admin Login</a>
+  </div>
+    </div>
+
+  </div>
+  <script>
+    window.onscroll = function() {
+      myFunction()
+    };
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+  </script>
+
+</body>
+
+</html>
